@@ -78,7 +78,7 @@
             box-shadow: 0 0 15px var(--accent-glow);
         }
 
-        /* Navegação Fixa (UX: Fácil acesso) */
+        /* Navegação Fixa */
         header {
             position: fixed;
             top: 0;
@@ -128,7 +128,7 @@
             color: var(--accent-cyan);
         }
 
-        /* Seção Hero (Impacto Inicial) */
+        /* Seção Hero */
         .hero {
             padding: 12rem 2rem 8rem;
             max-width: 1200px;
@@ -170,7 +170,7 @@
             gap: 1rem;
         }
 
-        /* Seção de Produtos/Serviços (Cards em Grid) */
+        /* Seção de Serviços (Grid 4 colunas ou 2x2) */
         .services {
             padding: 6rem 2rem;
             background-color: #0d0f16;
@@ -191,7 +191,7 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
@@ -203,6 +203,8 @@
             transition: transform 0.3s ease, border-color 0.3s ease;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         .card::after {
@@ -231,10 +233,16 @@
             font-size: 2.5rem;
             color: var(--accent-cyan);
             margin-bottom: 1.5rem;
+            font-family: monospace;
+            font-weight: bold;
         }
 
         .card h3 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .card p {
+            flex-grow: 1;
         }
 
         .card-features {
@@ -285,63 +293,72 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .hero p { font-size: 1rem; }
-            .nav-links { display: none; } /* Em produção, adicione um menu hamburger aqui */
+            .nav-links { display: none; }
             .hero-actions { flex-direction: column; }
         }
     </style>
-    <!-- Importação de fonte -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Cabeçalho / Navegação -->
     <header>
         <div class="nav-container">
             <a href="#" class="logo">TRIVALENT<span>TECH</span></a>
             <ul class="nav-links">
                 <li><a href="#solucoes">Soluções</a></li>
-                <li><a href="#metodologia">A Tríade</a></li>
+                <li><a href="#metodologia">Metodologia</a></li>
                 <li><a href="#contato">Falar com Especialista</a></li>
             </ul>
         </div>
     </header>
 
-    <!-- Seção Hero -->
     <section class="hero">
         <h1>Conexões Sólidas.<br><span>Sistemas Inteligentes.</span></h1>
-        <p>A Trivalent Tech entrega arquitetura de software de alto desempenho, automação de processos críticos e consultoria em governança corporativa. Escalabilidade nativa desenhada para o mercado B2B.</p>
+        <p>A Trivalent Tech entrega arquitetura de software de alto desempenho, presença web otimizada, automação de processos críticos e consultoria corporativa. Escalabilidade nativa desenhada para o seu negócio.</p>
         <div class="hero-actions">
             <a href="#solucoes" class="btn">Explorar Serviços</a>
             <a href="#contato" class="btn btn-outline">Agendar Diagnóstico</a>
         </div>
     </section>
 
-    <!-- Seção de Produtos/Serviços -->
     <section id="solucoes" class="services">
         <div class="section-header">
             <h2>Engenharia Ponta a Ponta</h2>
-            <p>Nossos três pilares de atuação garantem que a tecnologia da sua empresa não seja apenas um centro de custo, mas o motor principal de eficiência e receita.</p>
+            <p>Nossas frentes de atuação garantem que a tecnologia da sua empresa não seja apenas um centro de custo, mas o motor principal de eficiência e geração de receita.</p>
         </div>
 
         <div class="grid-container">
-            <!-- Card 1: Desenvolvimento -->
+            <!-- Card 1: Desenvolvimento de Sistemas -->
             <div class="card">
-                <div class="card-icon">{"{ }"}</div>
+                <div class="card-icon">{ }</div>
                 <h3>Desenvolvimento de Sistemas</h3>
-                <p>Criamos arquiteturas complexas do zero, escaláveis e resilientes. Foco total em desempenho, segurança de dados e interfaces voltadas para conversão e usabilidade.</p>
+                <p>Criamos arquiteturas complexas do zero, escaláveis e resilientes. Foco total em lógica de negócios, engenharia de dados e infraestrutura de alta disponibilidade.</p>
                 <ul class="card-features">
-                    <li>Aplicações Web (Single Page Applications)</li>
+                    <li>Sistemas Web (Single Page Applications)</li>
                     <li>Sistemas de Gestão Customizados (ERP/CRM)</li>
                     <li>Modelagem e Otimização de Bancos de Dados</li>
-                    <li>Dashboards de Alta Performance</li>
+                    <li>Dashboards Corporativos e BI</li>
                 </ul>
             </div>
 
-            <!-- Card 2: Automação -->
+            <!-- Card 2: Desenvolvimento de Sites -->
+            <div class="card">
+                <div class="card-icon">&lt; &gt;</div>
+                <h3>Desenvolvimento de Sites</h3>
+                <p>Construímos sua presença digital com foco absoluto em conversão. Interfaces modernas projetadas com as melhores práticas de UI/UX e otimizadas para motores de busca.</p>
+                <ul class="card-features">
+                    <li>Landing Pages de Alta Conversão</li>
+                    <li>Sites Institucionais e Corporativos</li>
+                    <li>Otimização de Performance e SEO</li>
+                    <li>Integração com Ferramentas de Marketing</li>
+                </ul>
+            </div>
+
+            <!-- Card 3: Automação -->
             <div class="card">
                 <div class="card-icon">⚡</div>
                 <h3>Automação de Processos</h3>
-                <p>Eliminamos o atrito operacional. Conectamos sistemas legados, APIs de terceiros e fluxos manuais em pipelines invisíveis, precisos e autônomos.</p>
+                <p>Eliminamos o atrito operacional. Conectamos sistemas legados, APIs de terceiros e fluxos manuais em pipelines invisíveis, precisos e totalmente autônomos.</p>
                 <ul class="card-features">
                     <li>RPA (Robotic Process Automation)</li>
                     <li>Integração complexa de APIs REST/GraphQL</li>
@@ -350,11 +367,11 @@
                 </ul>
             </div>
 
-            <!-- Card 3: Consultoria -->
+            <!-- Card 4: Consultoria -->
             <div class="card">
                 <div class="card-icon">▱</div>
                 <h3>Consultoria e Governança</h3>
-                <p>O pilar estratégico. Mapeamos as regras de negócio da sua empresa para garantir que a tecnologia reflita e potencialize a sua realidade operacional.</p>
+                <p>O pilar estratégico. Mapeamos as regras de negócio da sua empresa para garantir que a tecnologia reflita e potencialize a sua realidade operacional diária.</p>
                 <ul class="card-features">
                     <li>Mapeamento e Refatoração de Processos</li>
                     <li>Governança e Estruturação de Dados</li>
@@ -365,7 +382,6 @@
         </div>
     </section>
 
-    <!-- Rodapé -->
     <footer id="contato">
         <div class="footer-content">
             <div class="footer-logo">TRIVALENT<span>TECH</span></div>
