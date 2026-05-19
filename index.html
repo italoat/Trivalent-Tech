@@ -9,6 +9,7 @@
         :root {
             --bg-dark: #0a0b10;
             --bg-card: #151720;
+            --bg-alt: #0d0f16;
             --text-main: #e0e6ed;
             --text-muted: #8a94a6;
             --accent-cyan: #00e5ff;
@@ -31,7 +32,7 @@
         }
 
         /* Tipografia e UX Textual */
-        h1, h2, h3 {
+        h1, h2, h3, h4 {
             font-weight: 700;
             color: #ffffff;
             margin-bottom: 1rem;
@@ -170,13 +171,7 @@
             gap: 1rem;
         }
 
-        /* Seção de Serviços (Grid 4 colunas ou 2x2) */
-        .services {
-            padding: 6rem 2rem;
-            background-color: #0d0f16;
-            border-top: 1px solid #1f2233;
-        }
-
+        /* Títulos de Seção */
         .section-header {
             text-align: center;
             max-width: 800px;
@@ -185,6 +180,13 @@
 
         .section-header h2 {
             font-size: 2.5rem;
+        }
+
+        /* Seção de Serviços */
+        .services {
+            padding: 6rem 2rem;
+            background-color: var(--bg-alt);
+            border-top: 1px solid #1f2233;
         }
 
         .grid-container {
@@ -265,9 +267,67 @@
             color: var(--accent-cyan);
         }
 
+        /* Seção de Metodologia */
+        .methodology {
+            padding: 6rem 2rem;
+            background-color: var(--bg-dark);
+            border-top: 1px solid #1f2233;
+        }
+
+        .steps-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            position: relative;
+        }
+
+        /* Linha conectora entre os passos (visível apenas em telas maiores) */
+        @media (min-width: 992px) {
+            .steps-container::before {
+                content: '';
+                position: absolute;
+                top: 30px;
+                left: 50px;
+                right: 50px;
+                height: 2px;
+                background: linear-gradient(90deg, var(--accent-cyan) 0%, rgba(0,229,255,0.1) 100%);
+                z-index: 0;
+            }
+        }
+
+        .step {
+            position: relative;
+            z-index: 1;
+            background-color: var(--bg-dark);
+            padding-top: 1rem;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--bg-card);
+            border: 2px solid var(--accent-cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent-cyan);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+        }
+
+        .step h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
         /* Rodapé */
         footer {
-            background-color: var(--bg-dark);
+            background-color: var(--bg-alt);
             border-top: 1px solid #1f2233;
             padding: 4rem 2rem;
             text-align: center;
@@ -295,6 +355,7 @@
             .hero p { font-size: 1rem; }
             .nav-links { display: none; }
             .hero-actions { flex-direction: column; }
+            .steps-container { gap: 2rem; }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -321,6 +382,7 @@
         </div>
     </section>
 
+    <!-- Seção de Soluções -->
     <section id="solucoes" class="services">
         <div class="section-header">
             <h2>Engenharia Ponta a Ponta</h2>
@@ -328,7 +390,6 @@
         </div>
 
         <div class="grid-container">
-            <!-- Card 1: Desenvolvimento de Sistemas -->
             <div class="card">
                 <div class="card-icon">{ }</div>
                 <h3>Desenvolvimento de Sistemas</h3>
@@ -341,7 +402,6 @@
                 </ul>
             </div>
 
-            <!-- Card 2: Desenvolvimento de Sites -->
             <div class="card">
                 <div class="card-icon">&lt; &gt;</div>
                 <h3>Desenvolvimento de Sites</h3>
@@ -354,7 +414,6 @@
                 </ul>
             </div>
 
-            <!-- Card 3: Automação -->
             <div class="card">
                 <div class="card-icon">⚡</div>
                 <h3>Automação de Processos</h3>
@@ -367,7 +426,6 @@
                 </ul>
             </div>
 
-            <!-- Card 4: Consultoria -->
             <div class="card">
                 <div class="card-icon">▱</div>
                 <h3>Consultoria e Governança</h3>
@@ -378,6 +436,37 @@
                     <li>Auditoria de Arquitetura de Software</li>
                     <li>Direcionamento Técnico para CTOs/CEOs</li>
                 </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nova Seção: Metodologia -->
+    <section id="metodologia" class="methodology">
+        <div class="section-header">
+            <h2>A Tríade de Execução</h2>
+            <p>Nosso método de trabalho garante previsibilidade do início ao fim. Transformamos requisitos complexos em entregas funcionais de forma transparente.</p>
+        </div>
+
+        <div class="steps-container">
+            <!-- Passo 1 -->
+            <div class="step">
+                <div class="step-number">01</div>
+                <h4>Mapeamento e Arquitetura</h4>
+                <p>Iniciamos com uma imersão na sua operação. Realizamos auditorias técnicas, definimos as regras de negócio cruciais e desenhamos a arquitetura de software e dados antes de escrever qualquer linha de código.</p>
+            </div>
+
+            <!-- Passo 2 -->
+            <div class="step">
+                <div class="step-number">02</div>
+                <h4>Engenharia e Integração</h4>
+                <p>A fase de construção ágil. Nossos especialistas desenvolvem interfaces de alta conversão, constroem lógicas de retaguarda robustas e implementam as esteiras de automação necessárias para o seu ecossistema.</p>
+            </div>
+
+            <!-- Passo 3 -->
+            <div class="step">
+                <div class="step-number">03</div>
+                <h4>Go-Live e Governança</h4>
+                <p>A entrega não é o fim, é o início da estabilidade. Executamos um Go-Live estruturado, garantindo monitoramento contínuo de performance, transferência de conhecimento e políticas sólidas de governança de TI.</p>
             </div>
         </div>
     </section>
