@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivalent Tech | Conexões Sólidas. Sistemas Inteligentes.</title>
+    <style>
+        /* CSS Reset e Variáveis */
+        :root {
+            --bg-dark: #0a0b10;
+            --bg-card: #151720;
+            --text-main: #e0e6ed;
+            --text-muted: #8a94a6;
+            --accent-cyan: #00e5ff;
+            --accent-glow: rgba(0, 229, 255, 0.4);
+            --font-stack: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Tipografia e UX Textual */
+        h1, h2, h3 {
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Botões com Micro-interações */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--bg-dark);
+            background-color: var(--accent-cyan);
+            border: 2px solid var(--accent-cyan);
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--accent-cyan);
+            box-shadow: 0 0 25px var(--accent-glow);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--accent-cyan);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent-cyan);
+            color: var(--bg-dark);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        /* Navegação Fixa (UX: Fácil acesso) */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(10, 11, 16, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #1f2233;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--accent-cyan);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* Seção Hero (Impacto Inicial) */
+        .hero {
+            padding: 12rem 2rem 8rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: left;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0,229,255,0.1) 0%, rgba(10,11,16,0) 70%);
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+        }
+
+        .hero h1 span {
+            color: var(--accent-cyan);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Seção de Produtos/Serviços (Cards em Grid) */
+        .services {
+            padding: 6rem 2rem;
+            background-color: #0d0f16;
+            border-top: 1px solid #1f2233;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+        }
+
+        .grid-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 1px solid #1f2233;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent-cyan);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #2a2e45;
+        }
+
+        .card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--accent-cyan);
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+        }
+
+        .card-features {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .card-features li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .card-features li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent-cyan);
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: var(--bg-dark);
+            border-top: 1px solid #1f2233;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .footer-logo {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: 2px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1rem; }
+            .nav-links { display: none; } /* Em produção, adicione um menu hamburger aqui */
+            .hero-actions { flex-direction: column; }
+        }
+    </style>
+    <!-- Importação de fonte -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Cabeçalho / Navegação -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">TRIVALENT<span>TECH</span></a>
+            <ul class="nav-links">
+                <li><a href="#solucoes">Soluções</a></li>
+                <li><a href="#metodologia">A Tríade</a></li>
+                <li><a href="#contato">Falar com Especialista</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Seção Hero -->
+    <section class="hero">
+        <h1>Conexões Sólidas.<br><span>Sistemas Inteligentes.</span></h1>
+        <p>A Trivalent Tech entrega arquitetura de software de alto desempenho, automação de processos críticos e consultoria em governança corporativa. Escalabilidade nativa desenhada para o mercado B2B.</p>
+        <div class="hero-actions">
+            <a href="#solucoes" class="btn">Explorar Serviços</a>
+            <a href="#contato" class="btn btn-outline">Agendar Diagnóstico</a>
+        </div>
+    </section>
+
+    <!-- Seção de Produtos/Serviços -->
+    <section id="solucoes" class="services">
+        <div class="section-header">
+            <h2>Engenharia Ponta a Ponta</h2>
+            <p>Nossos três pilares de atuação garantem que a tecnologia da sua empresa não seja apenas um centro de custo, mas o motor principal de eficiência e receita.</p>
+        </div>
+
+        <div class="grid-container">
+            <!-- Card 1: Desenvolvimento -->
+            <div class="card">
+                <div class="card-icon">{"{ }"}</div>
+                <h3>Desenvolvimento de Sistemas</h3>
+                <p>Criamos arquiteturas complexas do zero, escaláveis e resilientes. Foco total em desempenho, segurança de dados e interfaces voltadas para conversão e usabilidade.</p>
+                <ul class="card-features">
+                    <li>Aplicações Web (Single Page Applications)</li>
+                    <li>Sistemas de Gestão Customizados (ERP/CRM)</li>
+                    <li>Modelagem e Otimização de Bancos de Dados</li>
+                    <li>Dashboards de Alta Performance</li>
+                </ul>
+            </div>
+
+            <!-- Card 2: Automação -->
+            <div class="card">
+                <div class="card-icon">⚡</div>
+                <h3>Automação de Processos</h3>
+                <p>Eliminamos o atrito operacional. Conectamos sistemas legados, APIs de terceiros e fluxos manuais em pipelines invisíveis, precisos e autônomos.</p>
+                <ul class="card-features">
+                    <li>RPA (Robotic Process Automation)</li>
+                    <li>Integração complexa de APIs REST/GraphQL</li>
+                    <li>Scripts de extração e higienização de dados</li>
+                    <li>Pipelines de CI/CD e rotinas de backup</li>
+                </ul>
+            </div>
+
+            <!-- Card 3: Consultoria -->
+            <div class="card">
+                <div class="card-icon">▱</div>
+                <h3>Consultoria e Governança</h3>
+                <p>O pilar estratégico. Mapeamos as regras de negócio da sua empresa para garantir que a tecnologia reflita e potencialize a sua realidade operacional.</p>
+                <ul class="card-features">
+                    <li>Mapeamento e Refatoração de Processos</li>
+                    <li>Governança e Estruturação de Dados</li>
+                    <li>Auditoria de Arquitetura de Software</li>
+                    <li>Direcionamento Técnico para CTOs/CEOs</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer id="contato">
+        <div class="footer-content">
+            <div class="footer-logo">TRIVALENT<span>TECH</span></div>
+            <p>Transformando complexidade operacional em vantagem competitiva.</p>
+            <a href="mailto:contato@trivalenttech.com" class="btn">Iniciar Projeto Técnico</a>
+            <p style="margin-top: 2rem; font-size: 0.8rem;">&copy; 2026 Trivalent Tech. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
